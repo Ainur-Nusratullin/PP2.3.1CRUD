@@ -1,7 +1,6 @@
 package web.dao;
 
 
-
 import org.springframework.stereotype.Repository;
 import web.model.User;
 
@@ -31,9 +30,16 @@ public class UserDaoImp implements UserDao {
         entityManager.persist(user);
     }
 
+    //    @Override
+//    public void delete(User user) {
+//        entityManager.remove(user);
+//    }
     @Override
-    public void delete(User user) {
-        entityManager.remove(user);
+    public void deleteById(int id) {
+        User managedUser = entityManager.find(User.class, id); // находим managed entity по id
+        if (managedUser != null) {
+            entityManager.remove(managedUser); // удаляем managed entity
+        }
     }
 
     @Override

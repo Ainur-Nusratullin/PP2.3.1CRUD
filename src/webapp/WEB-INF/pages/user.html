@@ -23,6 +23,7 @@
 <table class="table">
     <thead>
     <tr>
+        <th scope="col">id</th>
         <th scope="col">name</th>
         <th scope="col">surname</th>
         <th scope="col">salary</th>
@@ -30,6 +31,7 @@
     </thead>
     <tbody>
     <tr th:each="user: ${user}">
+        <td th:text="${user.getId()}">
         <td th:text="${user.getName()}">
         <td th:text="${user.getSurname()}">
         <td th:text="${user.getSalary()}">

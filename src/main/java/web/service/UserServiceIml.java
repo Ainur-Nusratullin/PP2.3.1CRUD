@@ -31,10 +31,15 @@ public class UserServiceIml implements UserService {
         userDao.add(user);
     }
 
+    //    @Transactional
+//    @Override
+////    public void delete(User user) {
+////        userDao.delete(user);
+////    }
     @Transactional
     @Override
-    public void delete(User user) {
-        userDao.delete(user);
+    public void deleteById(int id) {
+        userDao.deleteById(id);
     }
 
     @Transactional
