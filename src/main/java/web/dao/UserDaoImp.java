@@ -14,11 +14,6 @@ public class UserDaoImp implements UserDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-
-    }
-
     @Override
     @SuppressWarnings("unchecked")
     public List<User> allUser() {
@@ -30,26 +25,22 @@ public class UserDaoImp implements UserDao {
         entityManager.persist(user);
     }
 
-    //    @Override
-//    public void delete(User user) {
-//        entityManager.remove(user);
-//    }
     @Override
     public void deleteById(int id) {
-        User managedUser = entityManager.find(User.class, id); // находим managed entity по id
-        if (managedUser != null) {
-            entityManager.remove(managedUser); // удаляем managed entity
+        User user = entityManager.find(User.class, id);
+        if (user != null) {
+            entityManager.remove(user);
         }
     }
 
     @Override
     public void edit(User user) {
-        User managedUser = entityManager.find(User.class, user.getId());
-        if (managedUser != null) {
-            managedUser.setName(user.getName());
-            managedUser.setSurname(user.getSurname());
-            managedUser.setSalary(user.getSalary());
-            entityManager.merge(managedUser);
+        User user1 = entityManager.find(User.class, user.getId());
+        if (user1 != null) {
+            user1.setName(user.getName());
+            user1.setSurname(user.getSurname());
+            user1.setSalary(user.getSalary());
+            entityManager.merge(user1);
         }
     }
 

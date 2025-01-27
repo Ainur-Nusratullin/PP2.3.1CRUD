@@ -11,15 +11,11 @@ import java.util.List;
 
 @Service
 public class UserServiceIml implements UserService {
-
+    @Autowired
     private UserDao userDao;
 
-    @Autowired
-    public void setUserDao(UserDao userDao) {
-        this.userDao = userDao;
-    }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public List<User> allUser() {
         return userDao.allUser();
@@ -31,11 +27,6 @@ public class UserServiceIml implements UserService {
         userDao.add(user);
     }
 
-    //    @Transactional
-//    @Override
-////    public void delete(User user) {
-////        userDao.delete(user);
-////    }
     @Transactional
     @Override
     public void deleteById(int id) {
@@ -48,7 +39,7 @@ public class UserServiceIml implements UserService {
         userDao.edit(user);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public User getById(int id) {
         return userDao.getById(id);
