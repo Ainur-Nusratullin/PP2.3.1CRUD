@@ -39,7 +39,7 @@ public class UserController {
     public String editUser(@RequestParam("id") int id, Model model) {
         User user = userService.getById(id);
         model.addAttribute("user", user);
-        return "update"; // Используем ту же форму для редактирования
+        return "update"; 
     }
 
     @PostMapping("/editUser")
